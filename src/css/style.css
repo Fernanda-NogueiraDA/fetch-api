@@ -27,12 +27,15 @@ main {
 .devicon-github-original {
   font-size: 60px;
   margin-bottom: 30px;
-  color: #ffffff;
+  color: #fff;
 }
 
 .section {
   padding: 70px 0;
+  margin-top: 20px; 
+  border-top: 1px solid #eee;
 }
+
 
 .container {
   width: 60%; 
@@ -60,29 +63,25 @@ main {
   margin-bottom: 30px;
 }
 
-.container header #input-search {
+.container header #input-search,
+.container header #btn-search { 
   width: 400px;
   font-size: 17px;
-  margin: 0 auto;
   padding: 10px;
   border-radius: 7px;
   border: 1px solid grey;
 }
 
+
 .container header #btn-search {
   width: 200px;
-  font-size: 17px;
-  margin: 20px auto 0;
-  padding: 10px;
-  border-radius: 7px;
-  cursor: pointer;
-  border: 1px solid grey;
+  margin: 20px auto 0; 
 }
 
 .container header #btn-search:hover {
   background-color: hotpink;
-  color: #ffffff;
-  border-color: #ffffff;
+  color: #fff;
+  border-color: #fff;
 }
 
 .container .profile-data {
@@ -148,9 +147,6 @@ main {
   color: #fff;
 }
 
-.container .profile-data.hide {
-  display: none;
-}
 
 .repo-stats {
    margin-bottom: 10px;
@@ -188,19 +184,13 @@ main {
   margin-top: 5px;
 }
 
-.section {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-}
-
 /*EVENTOS */
 
-.events.section {
-  padding: 30px;
-  margin: 30px;
+.events {
   background: #f8f9fa;
   border-radius: 6px;
+  padding: 30px;
+  margin: 30px 0;
 }
 
 .events h2 {

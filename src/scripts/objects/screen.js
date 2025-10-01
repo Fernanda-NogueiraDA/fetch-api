@@ -19,7 +19,7 @@ const screen = {
   },
 
     renderRepositories(repositories) {
-    if (repositories && repositories.length > 0) {                  
+    if (Array.isArray(repositories) && repositories.length > 0) {      
       let repositoriesItens = '';
       repositories.forEach(repo => {
         repositoriesItens += `
@@ -46,26 +46,19 @@ const screen = {
   },
 
   renderEvents(events) {
-    if(events && events.length > 0) {
+    if(Array.isArray(events) && events.length > 0) {
       let eventsItens = '';
       
       events.forEach(event => {
-        if(event.type === 'PushEvent') {
-          const repoName = event.repo.name;
-          const commitMessage = event.payload.commits?.[0]?.message ?? 'Sem mensagem de commit';
-          
+       const repoName = event.repo?.name || 'Repositório desconhecido';
+        const commitMessage = event.payload?.commits?.[0]?.message ?? 'Sem mensagem de commit';
+        
+        if (event.type === 'PushEvent' || event.type === 'CreateEvent') {
           eventsItens += `<li>
-            <strong>${repoName}</strong> - ${commitMessage}
-          </li>`;
-        } 
-        else if(event.type === 'CreateEvent') {
-
-          const repoName = event.repo.name;
-          eventsItens += `<li>
-            <strong>${repoName}</strong> - Sem mensagem de commit
-          </li>`;
+                             <strong>${repoName}</strong> - ${commitMessage}
+                           </li>`
         }
-      });
+      })
 
       this.userProfile.innerHTML += `<div class="events section">
                                         <h2>Eventos</h2>

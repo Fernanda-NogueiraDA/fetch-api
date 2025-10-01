@@ -31,19 +31,19 @@ function validateEmptyInput(userName){
     alert('Preencha o campo com o nome do usuário do GitHub')
     return true
   }
+    return false;
 }
 
 async function getUserData(userName) {
 
   const userResponse = await getUser(userName)
 
-  if(userResponse.message === "Not Found"){
+  if(!userResponse || userResponse.message === "Not Found"){
     screen.renderNotFound()
     return
   }
 
   const repositoriesResponse = await getRepositories(userName)
-
   const eventsResponse = await getEvents(userName)
   
   user.setInfo(userResponse)
